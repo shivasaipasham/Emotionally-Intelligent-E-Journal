@@ -1,0 +1,205 @@
+<html>
+   <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Itim">
+    <style>
+
+        .column {
+        float: left;
+        height : 30%;
+        }
+
+        .gap{
+            width: 4%;
+        }
+
+        html {
+            background-color: #ececec;
+            min-height: 1000px;
+            font-family: 'helvetica neue';
+        }
+
+        .left {
+            width: 31%;
+            background-color: #f3d250;
+            font-family:"Itim";
+            font-size: 18px;
+            text-align: center;
+            padding: 50px 0;
+            border: 1px solid black;
+            border-radius: 15px;
+            box-shadow:  0 0 15px  rgba(255, 0, 0, 0.342);
+            -moz-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -webkit-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -o-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+        }
+
+
+        .middle {
+            width: 30%;
+            background-color:#f78888;
+            font-family:"Itim";
+            font-size: 18px;
+            text-align: center;
+            padding: 50px 0;
+            border: 1px solid black;
+            border-radius: 15px;
+            box-shadow:  0 0 15px  rgba(255, 0, 0, 0.342);
+            -moz-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -webkit-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -o-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+        }
+
+        .right {
+            width: 30%;
+            background-color:#90ccf4;
+            font-family:"Itim";
+            font-size: 18px;
+            text-align: center;
+            padding: 50px 0;
+            border: 1px solid black;
+            border-radius: 15px;
+            box-shadow: 5px 5px 5px red;
+            box-shadow:  0 0 15px  rgba(255, 0, 0, 0.342);
+            -moz-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -webkit-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -o-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+        }
+
+        .headdiv{
+            text-align:center;
+            font-family: "Itim";
+            background-color: #5da2d5;
+            width:50%;
+            margin: 0% 0% 2.5% 25%;
+            border-radius: 10px;
+            box-shadow:  0 0 15px  rgba(255, 0, 0, 0.342);
+            -moz-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -webkit-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+            -o-box-shadow: 0 0 15px  rgba(0,0,0,0.6);
+        }
+
+        img{
+            cursor:pointer;
+        }
+
+        input[type=submit]{
+            background-color: #f4976c;
+            color:green;
+            margin-top: 1.5%;
+            height:50px;
+            width: 250px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 0.5px solid black;
+            font-size: 20px;
+            cursor:pointer;
+        }
+
+        h1{
+            color:black;
+            font-family: "Sofia", sans-serif;
+            padding: 10px;
+        }
+
+        input{
+            border: 2px solid black;
+        }
+
+        textarea{
+            border: 2px solid black;
+        }
+
+        #bottom {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 50%;
+        }
+
+        .introtext{
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        form {
+        text-align: center;
+        margin-left: 20px;
+        }
+
+        ::placeholder {
+        color: grey;
+        }
+
+    </style>
+    </head>
+   <body>
+    <div class="headdiv">
+        <h1>Emotionally Intelligent E-Journal</h1>
+    </div>
+    <div class="introtext"><b><center>Welcome to Emotionally Intelligent E-Journal!!</center></b></br>
+    <center>You can choose any one of the three Input methods shown below to perform the sentimental analysis and view results.</center>
+    </div>
+      <form action = "http://localhost:5000/uploader" method = "POST" onsubmit="handle()" enctype = "multipart/form-data">
+          <main>
+          <div class="top">
+            <div class="column left">
+                <b>AUDIO FILES HERE</b><br><br><br>
+                <input type = "file" id = "f" name = "f" /><br><br><br>
+                Upload your pre-recorded audio files here<br/><br/>
+                <b>Note:</b> Only audio files with .wav</br> extension should be uploaded.
+            </div>
+              <div class="column gap">&nbsp;</div>
+            <div class="column middle">
+                <b>TEXT HERE</b><br><br><br>
+                <label for="text_input"> Enter text</label><br/><br/>
+                <textarea id="text_input" name="text_input" rows="4" cols="50" placeholder="Enter text"></textarea><br/><br/><br/>
+                <p>Enter the text here and submit.</p>
+            </div>
+              <div class="column gap">&nbsp;</div>
+            <div class="column right">
+                <b>LIVE MIC HERE</b><br><br>
+                <label for="mic_input">Speech Recognition</label><br/><br/>
+                <input type="textarea" name="mic_input" placeholder="Click and Speak" style="width:60% ; height:20%"  id="mic_input"/>
+                <img src="https://cdn.pixabay.com/photo/2018/05/15/20/47/microphone-3404243_960_720.png" align="center" onclick="record()" height="50px" width="50px"/></br></br></br>
+                <p>Click on the record button to speak <br/>and submit your audio.</p>
+            </div>
+        </div>
+          <div class="bottom">
+            <p align="middle">
+                <br/><br/><br/>
+                <input type="submit" />
+            </p>
+        </div>
+    </form>
+    <!-- Below is the script for voice recognition and conversion to text-->
+    <script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                // console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+        function handle(){
+            var inp1 = document.getElementById('mic_input').value;
+            var inp2 = document.getElementById('text_input').value;
+            var inp3 = document.getElementById('f').value;
+            if(inp1 == "" && inp2 == "" && inp3 == ""){
+               window.alert("Enter Any Input");
+               return false;
+               }
+                if(inp1 != "" && inp2 == "" && inp3 == "")
+                   return true;
+                if(inp1 == "" && inp2 != "" && inp3 == "")
+                   return true;
+                if(inp1 == "" && inp2 == "" && inp3 != "")
+                   return true;
+                window.alert("Enter Only 1 Input");
+                return false;
+        }
+    </script>
+   </body>
+</html>
